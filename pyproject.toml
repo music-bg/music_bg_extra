@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "music_bg_extra"
-version = "0.2.0"
+version = "0.2.1"
 description = "Extra utils for music_bg"
 readme = "README.md"
 authors = ["Pavel Kirilin <win10@list.ru>"]

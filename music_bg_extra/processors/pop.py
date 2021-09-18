@@ -50,15 +50,15 @@ def pop_filter(  # noqa: WPS210
     increaser = partial(mul, increase_factor)
     decreaser = partial(mul, decrease_factor)
 
-    red, green, blue, _ = image.split()
+    red, green, blue, alpha = image.split()
 
     r_dec, r_inc = red.point(decreaser), red.point(increaser)
     g_dec, g_inc = green.point(decreaser), green.point(increaser)
     b_dec, b_inc = blue.point(decreaser), blue.point(increaser)
 
-    r_img = Image.merge("RGB", (r_inc, g_dec, b_dec))
-    g_img = Image.merge("RGB", (r_dec, g_inc, b_dec))
-    b_img = Image.merge("RGB", (r_dec, g_dec, b_inc))
+    r_img = Image.merge("RGBA", (r_inc, g_dec, b_dec, alpha))
+    g_img = Image.merge("RGBA", (r_dec, g_inc, b_dec, alpha))
+    b_img = Image.merge("RGBA", (r_dec, g_dec, b_inc, alpha))
 
     res = Image.new(  # noqa;
         "RGBA",
@@ -66,8 +66,8 @@ def pop_filter(  # noqa: WPS210
         (0, 0, 0, 0),
     )
 
-    res.paste(r_img, (0, 0))
-    res.paste(g_img, (offset_x, offset_y))
-    res.paste(b_img, (offset_x * 2, offset_y * 2))
+    res.alpha_composite(r_img, (0, 0))
+    res.alpha_composite(g_img, (offset_x, offset_y))
+    res.alpha_composite(b_img, (offset_x * 2, offset_y * 2))
 
     return res
