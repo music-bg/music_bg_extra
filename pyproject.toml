@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "music_bg_extra"
-version = "0.2.3"
+version = "0.2.4"
 description = "Extra utils for music_bg"
 readme = "README.md"
 authors = ["Pavel Kirilin <win10@list.ru>"]
@@ -21,7 +21,7 @@ classifiers = [
 [tool.poetry.dependencies]
 python = "^3.8"
 Pillow-SIMD = "^7.0.0"
-music-bg = "^0.1.9"
+music-bg = "^0.2.0"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.9.2"
