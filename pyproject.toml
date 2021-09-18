@@ -1,9 +1,22 @@
 [tool.poetry]
 name = "music_bg_extra"
-version = "0.1.0"
+version = "0.2.0"
 description = "Extra utils for music_bg"
 readme = "README.md"
 authors = ["Pavel Kirilin <win10@list.ru>"]
+repository = "https://github.com/music-bg/music_bg_extra"
+homepage = "https://github.com/music-bg/music_bg_extra"
+documentation = "https://github.com/music-bg/music_bg/wiki"
+keywords = [
+  "Music",
+  "Image Processing",
+  "Music Background"
+]
+classifiers = [
+  "Topic :: Scientific/Engineering :: Image Processing",
+  "Topic :: Multimedia :: Sound/Audio",
+  "Typing :: Typed"
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -24,6 +37,7 @@ autoflake = "^1.4"
 box_blur = "music_bg_extra.processors.blur:box_blur"
 gaussian_blur = "music_bg_extra.processors.blur:gaussian_blur"
 circle = "music_bg_extra.processors.circle:circle"
+pop_filter = "music_bg_extra.processors.pop:pop_filter"
 
 [tool.poetry.plugins.mbg_variables]
 uuid4 = "music_bg_extra.variables.uuid_gen:uuid4"
