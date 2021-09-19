@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "music_bg_extra"
-version = "0.2.4"
+version = "0.2.5"
 description = "Extra utils for music_bg"
 readme = "README.md"
 authors = ["Pavel Kirilin <win10@list.ru>"]
@@ -19,9 +19,10 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = ">=3.8,<3.11"
 Pillow-SIMD = "^7.0.0"
 music-bg = "^0.2.0"
+numpy = "^1.21.2"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.9.2"
@@ -42,6 +43,7 @@ pop_filter = "music_bg_extra.processors.pop:pop_filter"
 
 [tool.poetry.plugins.mbg_variables]
 uuid4 = "music_bg_extra.variables.uuid_gen:uuid4"
+most_frequent_color = "music_bg_extra.variables.colors:most_frequent_color"
 
 [tool.isort]
 profile = "black"
