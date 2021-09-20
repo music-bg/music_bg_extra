@@ -9,9 +9,14 @@ Processors:
 * Gaussian blur;
 * Circle;
 * pop_filter
+* print
+* radial_gradient
 
 Variables:
 * uuid4
+* most_frequent_color
+* least_frequent_color or most_frequent_color_inverted
+
 
 Source image for all examples is:
 ![box_blur](https://raw.githubusercontent.com/music-bg/music_bg_extra/master/images/src.png)
@@ -81,7 +86,60 @@ This processor splits image onto 3 color channels and places near each other.
 increase and decrease factors change
 increasing and decreasing incdividual colors for each color chanel.
 
+# Print
+
+![print](https://raw.githubusercontent.com/music-bg/music_bg_extra/master/images/print_processor.png)
+
+This processor renders text on an image.
+
+```json
+{
+  "name": "print",
+  "args": {
+    "text": "This text created by processor",
+    "color": "#FFFFFF",
+    "font": "FiraCode-Retina",
+    "font_size": 30,
+    "start_x": null,
+    "start_y": null,
+    }
+}
+```
+
+you can adjust font and size.
+Also you can choose x and y coordinates where to
+start draw.
+
+
+# Radial gradient
+![radial_gradient](https://raw.githubusercontent.com/music-bg/music_bg_extra/master/images/radial_gradient.png)
+
+This processor creates radial gradient with
+two colors "inner" and "outer".
+Inner - color at the center of an image,
+outer - color at the border.
+
 # Variables
 
+## uuid4
 You can use "{uuid4}" or "{uuid4.hex}" in your config to generate
 UUIDv4.
+
+
+## most_frequent_color
+
+This variable is used to retrieve
+most frequent color of an image in
+hex format.
+
+## least_frequent_color
+
+This variable is used to retrieve
+inverted color to the most frequent one.
+
+It's calculated by inverting the
+original color.
+
+inverted = (255 - red, 255 - green, 255 - blue)
+
+Also this variable has a synonym "`most_frequent_color_inverted`".

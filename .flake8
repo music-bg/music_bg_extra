@@ -64,6 +64,9 @@ ignore =
   WPS229,
   ; Found function with too much cognitive complexity
   WPS231,
+  ; Found magic number
+  WPS432,
+
 
 per-file-ignores =
   ; all tests
@@ -86,8 +89,6 @@ per-file-ignores =
   WPS437,
   ; Found too many local variables
   WPS210,
-  ; Found magic number
-  WPS432,
   ; Found too many arguments
   WPS211,
   ; Found too many `assert` statements

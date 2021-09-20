@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "music_bg_extra"
-version = "0.2.5"
+version = "0.2.6"
 description = "Extra utils for music_bg"
 readme = "README.md"
 authors = ["Pavel Kirilin <win10@list.ru>"]
@@ -40,10 +40,14 @@ box_blur = "music_bg_extra.processors.blur:box_blur"
 gaussian_blur = "music_bg_extra.processors.blur:gaussian_blur"
 circle = "music_bg_extra.processors.circle:circle"
 pop_filter = "music_bg_extra.processors.pop:pop_filter"
+print = "music_bg_extra.processors.print:img_print"
+radial_gradient = "music_bg_extra.processors.gradients:radial_gradient"
 
 [tool.poetry.plugins.mbg_variables]
 uuid4 = "music_bg_extra.variables.uuid_gen:uuid4"
-most_frequent_color = "music_bg_extra.variables.colors:most_frequent_color"
+most_frequent_color = "music_bg_extra.variables.colors:most_frequent_color_var"
+most_frequent_color_inverted = "music_bg_extra.variables.colors:most_frequent_color_inverted_var"
+least_frequent_color = "music_bg_extra.variables.colors:most_frequent_color_inverted_var"
 
 [tool.isort]
 profile = "black"

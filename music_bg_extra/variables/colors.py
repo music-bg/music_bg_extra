@@ -1,8 +1,9 @@
 from music_bg.context import Context
-from PIL import Image
+
+from music_bg_extra.utils import most_frequent_color
 
 
-def most_frequent_color(context: Context) -> str:  # noqa: WPS210
+def most_frequent_color_var(context: Context) -> str:
     """
     The most frequent color of an album cover.
 
@@ -13,17 +14,24 @@ def most_frequent_color(context: Context) -> str:  # noqa: WPS210
     """
     if context.src_image is None:
         return "#000000"
-    img: Image.Image = context.src_image.copy()
+    dominant_color = most_frequent_color(context.src_image.copy())
+    return "#%02X%02X%02X" % dominant_color  # noqa: WPS323
 
-    img.thumbnail((100, 100))
 
-    # Reduce colors (uses k-means internally)
-    paletted = img.convert("P", palette=Image.ADAPTIVE, colors=16)  # noqa: WPS432
-    # Find the color that occurs most often
-    palette = paletted.getpalette()
-    color_counts = sorted(paletted.getcolors(), reverse=True)
-    palette_index = color_counts[0][1]
+def most_frequent_color_inverted_var(context: Context) -> str:
+    """
+    The most frequent color of an album cover.
 
-    dominant_color = palette[palette_index * 3 : palette_index * 3 + 3]
+    returns color in format like "#FFFFFF".
 
-    return "#%02X%02X%02X" % tuple(dominant_color)  # noqa: WPS323
+    :param context: current context.
+    :return: hex color.
+    """
+    if context.src_image is None:
+        return "#000000"
+    red, green, blue = most_frequent_color(context.src_image.copy())
+    return "#%02X%02X%02X" % (  # noqa: WPS323
+        255 - red,
+        255 - green,
+        255 - blue,
+    )
